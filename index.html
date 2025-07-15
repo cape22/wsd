@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Slider Web Sekolah</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="index.css ">
+
+ </head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <button class="btn-toggle" onclick="toggleSidebar()">&#9776;</button>
+    <a href="#" class="logo" data-i18n="school-name">SEKOLAH MI ASY-SYARIFIYAH</a>
+
+    <div class="lang-switch">
+     
+    </div>
+  </header>
+
+
+
+    
+
+<nav class="sidebar" id="sidebar">
+  <button class="btn-close" onclick="toggleSidebar()">&larr;</button>
+  <ul>
+    <li><a href="index.html" data-i18n="nav-home">Beranda</a></li>
+    <li><a href="tentang.html" data-i18n="nav-about">Tentang Asy</a></li>
+    <li><a href="#unggul" data-i18n="nav-register">Pendaftaran</a></li>
+
+    <li class="dropdown">
+      <span class="dropdown-toggle" onclick="toggleDropdown(event)">akses guru dan murid ▾</span>
+      <ul class="dropdown-content">
+        <li><a href="portalg.html" style="text-decoration: underline; " >guru</a></li>
+        <li><a href="login.html" style="text-decoration: underline;">murid</a></li>
+      </ul>
+    </li>
+
+    <li><a href="layanan.html" data-i18n="nav-service">Layanan</a></li>
+    <li><a href="prestasi.html" data-i18n="nav-pretasi">Prestasi</a></li>
+    <li><a href="akademik.html" data-i18n="nav-login">akademik dan fasilitas</a></li>
+    <li><a href="ekstrakulikuler.html" data-i18n="nav-ekstra">Ekstrakurikuler</a></li>
+  </ul>
+</nav>
+
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.style.display = (sidebar.style.display === "none") ? "block" : "none";
+  }
+
+  function toggleDropdown(event) {
+    event.preventDefault();
+    const content = event.target.nextElementSibling;
+    content.style.display = content.style.display === "block" ? "none" : "block";
+  }
+</script>
+
+
+
+
+
+  <!-- Slider Gambar -->
+  <div class="slider-container">
+    <div class="slide active">
+      <img src="err.jpeg" alt="Slide 1">
+    </div>
+    <div class="slide">
+      <img src="yan.jpeg" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="images.jpeg" alt="Slide 3">
+    </div>
+    <div class="text">
+      <h1 data-i18n="slider-title">sekolah mi asy-syarifiyah dawuan</h1>
+      <div class="button">
+        <p data-i18n="slider-info">info ppdb</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pendaftaran -->
+  <section id="unggul" class="ikut" >
+    <h2 style="text-align: center;" data-i18n="section-register">pendaftaran sekolah</h2>
+    <div class="card-container">
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <img src="images (1).jpeg" alt="Akademik" />
+        <h4 data-i18n="level-paud">jenjang paud</h4>
+        <p data-i18n="register">daftar</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="300">
+        <img src="images (1).jpeg" alt="Olahraga" />
+        <h4 data-i18n="level-sd">jenjang sd</h4>
+        <p data-i18n="register">daftar</p>
+      </div>
+      <div class="card" data-aos="fade-left">
+        <img src="images (1).jpeg" alt="Kreativitas" />
+        <h4 data-i18n="level-smp">jenjang smp(pesantren)</h4>
+        <p data-i18n="register">daftar</p>
+      </div>
+    </div>
+  </section>
+  <button onclick="toggleMode()" id="toggle-btn">🌙</button>
+
+  <section class="fpss">
+    <div class="pfs">
+      <h1>profil sekolah</h1>
+      <div class="pe">
+        <p> MI ASY-SYARIFIYAH beridiri sejak 2002 berlokasi di dawuan barat cikampek karawang. sekolah
+          kami termasuk sekolah islami yang memiliki beberapa tingkat mulai dari paud sd hingga smp(pesantren), untuk sekolah smp itu baru, yang berati masih angkatan satu.
+          untuk lebih lanjutnya bisa di scroll saja.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perkenalan -->
+  <section class="gacor" >
+    <aside class="left" data-aos="fade-right" data-aos-delay="500">
+      <h1>
+        <span >أَهْلًا وَسَهْلًا</span> / Selamat Datang<br>
+        Website Perkenalan Sekolah MI Asy-Syarifiyah
+      </h1>
+      
+      <p data-i18n="welcome-desc" class="data">
+        Pada website ini kita akan memperkenalkan web kita pada kalian,
+        mulai dari fasilitas, ekstrakurikuler, akademik, prestasi hingga pendaftaran.
+        Ada beberapa jenjang sekolah yang ada di MI Asy-Syarifiyah yaitu:
+        <b>TK, SD, SMP (Pesantren), dan Sekolah Agama</b>
+      </p>
+      
+    </aside>
+
+    <aside class="right" data-aos="fade-left" data-aos-delay="700">
+      <img src="images (1).jpeg" alt="Sekolah" style="max-width: 300px; border-radius: 10px;" />
+    </aside>
+  </section>
+
+  <!-- Visi -->
+  <section class="visi">
+    <div class="pisi" data-aos="fade-down" data-aos-delay="800">
+      <h1 data-i18n="visi-title" >visi</h1>
+      <p data-i18n="visi-desc">menjadi anak yang sholeh</p>
+    </div>
+    <div class="pisi" data-aos="fade-up" data-aos-delay="900">
+      <h1 data-i18n="misi-title" >misi</h1>
+      <p data-i18n="misi-desc">menjadikan anak disiplin</p>
+    </div>
+  </section>
+
+  <section class="wmi-container" >
+    <h2 style="text-align: center;">KENAPA MI?</h2>
+    <div class="wmi-div" >
+      <div class="wmi" data-aos="flip-left" data-aos-delay="400">
+        <div class="text-h">
+          <i class="fas	fa-hourglass-half icon-eskul"></i>
+          <h3>Belajar Menyenangkan di MI Asy-Syarifiyah</h3>
+          <p>di zaman seperti ini jagalah anak kita dengan dunia luar dengan bekal akhirat dan dunia</div>
+      </div>
+      <div class="wmi">
+        <div class="text-h">
+          <i class="fas fa-user-graduate icon-eskul"></i>
+          <h3>guru kita yang berkelulusan perguruan tinggi</h3>
+          <p>pengaruh nya yaitu jadi guru memiliki pengalaman dan kualitas yang bagus.</p>
+        </div>
+      </div>
+      <div class="wmi">
+        <div class="text-h">
+          <i class="fas fa-book-open icon-eskul"></i>
+          <h3>pembiasaan</h3>
+          <p>pada setiap hari kita memuraja'ah hafalan kita saat masuk kelas maka dari itu hafalan kita terjaga.</p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+
+  <section>
+    <h3 style="font-weight: bolder; font-size: xx-large; text-align: center;">galeri sekolah</h3>
+    <div class="container-foto">
+      <div class="item"> <img src="SnapInsta.to_458765147_18068303068608064_6361145503210224884_n.jpg.webp" alt=""></div>
+      <div class="item"> <img src="SnapInsta.to_458989733_18068303077608064_2695772563149818850_n.jpg.webp" alt=""></div>
+      <div class="item"> <img src="SnapInsta.to_461255628_18069921670608064_514695501865756782_n.jpg.webp" alt=""></div>
+      <div class="item"> <img src="SnapInsta.to_495621842_613134558419149_2809436989142576689_n.jpg" alt=""></div>
+      <div class="item"> <img src="SnapInsta.to_500477535_18093412246608064_5738626456275013088_n.jpg.webp" alt=""></div>
+      <div class="item"> <img src="images (1).jpeg" alt=""></div>
+    </div>
+  </section>
+
+
+   <section class="beritast">
+  <h1 style="text-align: center;">Berita Terbaru</h1>
+  <div class="berita" id="beritaContainer"></div>
+</section>
+
+<script>
+  fetch("https://script.google.com/macros/s/AKfycbw6IzJZNSmond9hxMLaHTMnyOxGNEm0tiP2cQ4uOQMpxVV5xGwhSltp3jWe65h7c3Xi/exec")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("beritaContainer");
+      data.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "berita-card";
+        card.innerHTML = `
+          <img src="${item.gambar}" alt="Berita">
+          <div class="berita-content">
+            <span class="tanggal">🕒 Diposting pada: ${item.tanggal}</span>
+            <h3>${item.judul}</h3>
+            <p>${item.isi}</p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(err => console.error("Gagal ambil data:", err));
+</script>
+
+
+
+
+
+  <section class="artikel-sekolah" >
+    <h2>Artikel Sekolah</h2>
+    <div class="artikel-container" >
+      <div class="artikel-card" data-aos="flip-left" data-aos-delay="400">
+        <img src="images.jpeg" alt="Artikel 1">
+        <div class="artikel-content">
+          <h3>Belajar Menyenangkan di MI Asy-Syarifiyah</h3>
+          <p>Kegiatan be        </div>
+      </div>
+      <div class="artikel-card">
+        <img src="SnapInsta.to_458765147_18068303068608064_6361145503210224884_n.jpg.webp" alt="Artikel 2">
+        <div class="artikel-content">
+          <h3>Memperingati maulid nabi</h3>
+          <p>kegiatan ini biasanya kami adakan setiap 1tahun sekali.</p>
+        </div>
+      </div>
+      <div class="artikel-card">
+        <img src="SnapInsta.to_461255628_18069921670608064_514695501865756782_n.jpg.webp" alt="Artikel 2">
+        <div class="artikel-content">
+          <h3>Kegiatan outing class</h3>
+          <p>kegiatan ini biasanya kami adakan setiap 1tahun sekali. <strong>ini tahun 2024</strong></p>
+        </div>
+      </div>
+      <div class="artikel-card">
+        <img src="SnapInsta.to_495621842_613134558419149_2809436989142576689_n.jpg" alt="Artikel 2">
+        <div class="artikel-content">
+          <h3>Kegiatan asesmen</h3>
+          <p>kegiatan ini biasanya kami adakan setiap 1tahun sekali. dan ini kegiatan yang pasti dilakukan</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+
+
+  <section class="wwd">
+    <h1 style="text-align: center;">what will we do?</h1>
+    <div class="wwd" id="wwd-container"></div>
+  </section>
+  
+  <script>
+    fetch("https://script.google.com/macros/s/AKfycbwNl78RVBLgC2lkDO510aDSGcSenf_dzaGX6QORmoiHztvbBTEugU69PSvePRyfCwst/exec")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("wwd-container");
+        data.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "wwd-card";
+          card.innerHTML = `
+            <img src="${item.gambar}" alt="Berita">
+            <h3>${item.judul}</h3>
+            <p>${item.isi}</p>
+            <div class="tanggal">🕒 Diposting pada: ${item.tanggal}</div>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => console.error("Gagal ambil data:", err));
+  </script>
+  
+  
+
+
+
+
+
+  <!-- Footer Sekolah -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Kolom Identitas Sekolah -->
+    <div class="footer-column">
+      <h3>MI Asy-Syarifiyah</h3>
+      <p>Jl. Pendidikan No. 123, Dawuan</p>
+      <p>Email: info@asy-syarifiyah.sch.id</p>
+      <p>Telp: 0821-1234-5678</p>
+    </div>
+
+
+
+    <!-- Kolom Navigasi Cepat -->
+    <div class="footer-column">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Tentang Kami</a></li>
+        <li><a href="#">Akademik</a></li>
+        <li><a href="#">Prestasi</a></li>
+        <li><a href="#">Pendaftaran</a></li>
+        <li><a href="#">Kontak</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>Ikuti Kami</h3>
+      <p><a href="#">Facebook</a></p>
+      <p><a href="#">Instagram</a></p>
+      <p><a href="https://wa.me/6282112345678" target="_blank">WhatsApp</a></p>
+      <p><a href="#">YouTube</a></p>
+    </div>
+
+    <div class="footer-column">
+      <h3>Lokasi</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="120" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 MI Asy-Syarifiyah. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <!-- JavaScript Language Switcher -->
+  <script>
+   
+    function updateTanggal(lang) {
+      const bulanIndo = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+      const bulanEng = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const hariIni = new Date();
+      const tanggal = hariIni.getDate();
+      const bulan = (lang === 'en' ? bulanEng : bulanIndo)[hariIni.getMonth()];
+      const tahun = hariIni.getFullYear();
+      const teks = translations[lang]["tanggal-posting"] || "Diposting pada:";
+      const tampilTanggal = `🕓 ${teks} ${tanggal} ${bulan} ${tahun}`;
+      document.querySelectorAll(".bulan").forEach(el => {
+        el.textContent = tampilTanggal;
+      });
+    }
+    
+    const savedLang = localStorage.getItem('lang') || 'id';
+    switchLanguage(savedLang);
+    
+    function toggleSidebar() {
+      const sb = document.getElementById('sidebar');
+      sb.style.left = (sb.style.left === '0px') ? '-260px' : '0px';
+    }
+    
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    }
+    
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+    
+    setInterval(nextSlide, 3000);
+    async function loadBerita() {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbxDTRq85JJzKhzoqjY92afpb0Y27_Cg2hPdlf86spA865ep8RBXF3FXj5azF5Z8jaIO/exec");
+      const data = await response.json();
+    
+      const container = document.getElementById("berita-container");
+      container.innerHTML = "";
+    
+      data.forEach(item => {
+        const html = `
+          <div class="berita-card">
+            <img src="${item.gambar}" alt="Berita">
+            <p><strong>${item.judul}</strong></p>
+            <p>${item.isi}</p>
+            <div class="bulan">🕓 Diposting pada: ${item.tanggal}</div>
+          </div>
+        `;
+        container.innerHTML += html;
+      });
+    }
+    
+    loadBerita();
+
+    
+async function loadUpcoming() {
+  const response = await fetch("https://script.google.com/macros/s/AKfycby3mYwMDvPIob2SZXJVu0Z3aQXuWCDxf5kRKcoxi97PMdOhzdsjc_wdb_GjG-7PWZ-r/exec"); 
+  const data = await response.json();
+  const container = document.getElementById("upcoming-container");
+  container.innerHTML = "";
+
+  data.forEach(item => {
+    const card = `
+      <div class="event-card">
+      <img src="${item.gambar}" ...>
+        <h3 class="event-title">${item.judul}</h3>
+        <p class="event-date">${item.tanggal}</p>
+        <p class="event-desc">${item.deskripsi}</p>
+      </div>
+    `;
+    container.innerHTML += card;
+  });
+}
+
+
+  function toggleMode() {
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+
+    // Ganti ikon tombol
+    const btn = document.getElementById("toggle-btn");
+    if (body.classList.contains("dark-mode")) {
+      btn.innerText = "☀️"; // Light mode icon
+      localStorage.setItem("mode", "dark");
+    } else {
+      btn.innerText = "🌙"; // Dark mode icon
+      localStorage.setItem("mode", "light");
+    }
+  }
+
+  // Saat halaman dibuka, cek mode sebelumnya
+  window.onload = () => {
+    const savedMode = localStorage.getItem("mode");
+    if (savedMode === "dark") {
+      document.body.classList.add("dark-mode");
+      document.getElementById("toggle-btn").innerText = "☀️";
+    }
+  };
+
+
+   
+
+    
+    </script>
+</body>
+</html>

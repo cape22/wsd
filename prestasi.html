@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Akademik - MI Asy-Syarifiyah</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>Halaman Akademik dan Prestasi Murid</h1>
+    <p>MI Asy-Syarifiyah Dawuan</p>
+    <a href="index.html" style="color: #f9f9f9; text-align: left;">kembali</a>
+  </header>
+
+  <section class="academic-section">
+    <h2>Struktur Kurikulum</h2>
+    <p>Kurikulum MI Asy-Syarifiyah mengacu pada Kurikulum Merdeka dan Kurikulum Kemenag. Siswa belajar mata pelajaran umum seperti Bahasa Indonesia, Matematika, IPA, IPS, serta pelajaran keagamaan seperti Fiqih, Akidah Akhlak, dan Bahasa Arab.</p>
+
+    <h2>Jadwal Kegiatan Belajar Mengajar</h2>
+    <ul>
+      <li>Senin - Kamis: 07.00 - 13.00 WIB</li>
+      <li>Jumat: 07.00 - 11.00 WIB</li>
+      <li>Sabtu: Kegiatan Ekstrakurikuler dan Tahfidz</li>
+    </ul>
+
+    <h2>Evaluasi & Penilaian</h2>
+    <p>Penilaian dilakukan melalui Ulangan Harian, Penilaian Tengah Semester (PTS), dan Penilaian Akhir Semester (PAS). Nilai siswa mencakup aspek kognitif, afektif, dan psikomotorik.</p>
+
+    <h2>Ekstrakurikuler Penunjang Akademik</h2>
+    <ul>
+      <li>Pramuka</li>
+      <li>Tahfidz Qur'an</li>
+      <li>Kegiatan Literasi dan Numerasi</li>
+      <li>Bahasa Inggris</li>
+    </ul>
+
+    <h2>Program Unggulan</h2>
+    <p>Program unggulan MI Asy-Syarifiyah adalah <b>Kelas Tahfidz</b>, <b>Program PAI Intensif</b>, dan <b>Digital Learning</b> berbasis perangkat Chromebook yang mendukung pembelajaran daring dan mandiri.</p>
+  </section>
+
+  </section><section class="beritast">
+    <h1 style="text-align: center;">prestasi sekolah dan murid</h1>
+    <div class="berita" id="beritaContainer"></div>
+  </section>
+  
+  <script>
+    fetch("https://script.google.com/macros/s/AKfycbysn6hzmlVmu_lJxVYVRMHzYiU_7HQhbJ4C8wH3uztPYNAzSgBoW_F9cJICvjEdPhP4/exec")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("beritaContainer");
+        data.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "berita-card";
+          card.innerHTML = `
+            <img src="${item.gambar}" alt="Berita" style="width:100%">
+            <h3>${item.judul}</h3>
+            <p>${item.isi}</p>
+            <div class="bulan">🕒 Diposting pada: ${item.tanggal}</div>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => console.error("Gagal ambil data:", err));
+  </script>
+  <!-- CSS DI BAWAH HTML -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .topbar {
+      background-color: #1b8f3d;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .academic-section {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+
+    .academic-section h2 {
+      color: #1b8f3d;
+      margin-top: 30px;
+    }
+
+    .academic-section p, .academic-section ul {
+      color: #333;
+      line-height: 1.6;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .academic-section {
+        padding: 20px;
+      }
+    }
+    .berita {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; 
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+
+
+
+.berita-card {
+  width: 210px; 
+  flex-shrink: 0;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  margin: 10px 0;
+  transition: 0.3s;
+}
+
+.berita-card:hover{
+  transform: translate(2px, -10px);
+      box-shadow: -3px 7px 20px black;
+      transition: 0.3s;
+}
+
+
+.berita-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.berita-card h3{
+  text-align: center;
+}
+
+.berita-card p,
+.berita-card #bulan {
+  margin: 10px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  color: #333;
+  background-color: #91f8d6;
+  border-radius: 20px;
+  
+}
+
+  </style>
+
+</body>
+</html>

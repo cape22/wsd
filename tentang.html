@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Portal Guru - MI Asy-Syarifiyah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f5f5f5; }
+    h2 { text-align: center; margin-bottom: 30px; }
+    .section { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 30px; }
+    input, textarea, button {
+      width: 100%; padding: 10px; margin: 8px 0;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    img { max-width: 100px; }
+  </style>
+</head>
+<body>
+
+  <h2>Portal Guru - MI Asy-Syarifiyah</h2>
+
+  <!-- Form Tambah Berita -->
+  <div class="section">
+    <h3>Tambah Berita Sekolah</h3>
+    <form id="form-berita">
+      <input type="text" id="judul" placeholder="Judul berita" required>
+      <textarea id="isi" placeholder="Isi berita" required></textarea>
+      <input type="date" id="tanggal" required>
+      <input type="text" id="gambar" placeholder="Link gambar (opsional)">
+      <button type="submit">Kirim Berita</button>
+    </form>
+    <div id="pesan-berita"></div>
+  </div>
+
+  <!-- Form Kirim Pesan ke Murid -->
+  <div class="section">
+    <h3>Kirim Pesan ke Murid</h3>
+    <form id="form-pesan">
+      <input type="text" id="nis" placeholder="NIS Siswa" required>
+      <input type="text" id="nama" placeholder="Nama Siswa" required>
+      <textarea id="pesan" placeholder="Isi pesan (contoh: Nilai kamu 85, tetap semangat!)" required></textarea>
+      <button type="submit">Kirim Pesan</button>
+    </form>
+    <div id="pesan-murid"></div>
+  </div>
+
+  <!-- Daftar Berita -->
+  <div class="section">
+    <h3>Daftar Berita Sekolah</h3>
+    <table id="tabel-berita">
+      <thead>
+        <tr><th>Judul</th><th>Isi</th><th>Tanggal</th><th>Gambar</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    const URL_BERITA = "https://script.google.com/macros/s/PASTE_ID_SCRIPT_BERITA/exec";
+    const URL_PESAN = "https://script.google.com/macros/s/PASTE_ID_SCRIPT_PESAN/exec";
+
+    document.getElementById("form-berita").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const data = {
+        judul: document.getElementById("judul").value,
+        isi: document.getElementById("isi").value,
+        tanggal: document.getElementById("tanggal").value,
+        gambar: document.getElementById("gambar").value,
+      };
+      const res = await fetch(URL_BERITA, {
+        method: "POST",
+        body: JSON.stringify(data)
+      });
+      const result = await res.text();
+      document.getElementById("pesan-berita").innerText = result;
+      e.target.reset();
+      loadBerita();
+    });
+
+    document.getElementById("form-pesan").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const data = {
+        nis: document.getElementById("nis").value,
+        nama: document.getElementById("nama").value,
+        pesan: document.getElementById("pesan").value,
+        tanggal: new Date().toISOString().split("T")[0]
+      };
+      const res = await fetch(URL_PESAN, {
+        method: "POST",
+        body: JSON.stringify(data)
+      });
+      const result = await res.text();
+      document.getElementById("pesan-murid").innerText = result;
+      e.target.reset();
+    });
+
+    async function loadBerita() {
+      const res = await fetch(URL_BERITA);
+      const data = await res.json();
+      const tbody = document.querySelector("#tabel-berita tbody");
+      tbody.innerHTML = "";
+      data.reverse().forEach(row => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${row.judul}</td>
+            <td>${row.isi}</td>
+            <td>${row.tanggal}</td>
+            <td>${row.gambar ? `<img src="${row.gambar}">` : '-'}</td>
+          </tr>`;
+      });
+    }
+
+    loadBerita();
+  </script>
+
+</body>
+</html>

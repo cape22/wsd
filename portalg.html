@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portal Guru - MI Asy-Syarifiyah</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    /* LOGIN PAGE */
+    #loginPage {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #fff;
+    }
+
+    #loginPage input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+      width: 200px;
+    }
+
+    #loginPage button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #loginPage .error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    
+
+    /* CONTENT */
+    #mainContent {
+      display: none;
+      padding: 20px;
+    }
+    
+    body {
+         font-family: sans-serif; 
+         padding: 0px;
+          background: #f5f5f5; }
+    h2
+     { text-align: center; 
+        margin-bottom: 30px; }
+    .section {
+         background: white;
+          padding: 10px; 
+          border-radius:10px;
+           box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+           margin-bottom: 30px;
+           justify-content: center;
+           align-items: center;
+           display: grid;
+            text-align: center;
+            }
+
+
+    input, textarea, button {
+      width: 400px;
+       padding: 10px;
+        margin: 8px 0;
+    }
+    table{
+         width: 10px;
+          border-collapse: collapse; 
+          margin-top: 0px; }
+    th, td 
+    { border: 1px solid #ccc; 
+        padding: 10px;
+         text-align: left; }
+    img 
+    { max-width: 100px; }
+  </style>
+</head>
+<body>
+
+  <!-- Halaman Login -->
+  <div id="loginPage">
+    <h2>Masukkan PIN Guru</h2>
+    <input type="password" id="pinInput" placeholder="PIN 4 digit" maxlength="6" />
+    <button onclick="cekPIN()">Masuk</button>
+    <div class="error" id="errorMsg"></div>
+  </div>
+
+  <div id="mainContent">
+    <h2>Portal Guru - MI Asy-Syarifiyah</h2>
+
+  
+
+  <!-- Form Kirim Pesan ke Murid -->
+  
+
+  <form id="form-berita">
+    <input type="text" id="judul" placeholder="Judul berita" required><br>
+    <textarea id="isi" placeholder="Isi berita" required></textarea><br>
+    <input type="date" id="tanggal" required><br>
+    <input type="text" id="gambar" placeholder="Link gambar (opsional)"><br>
+    <button type="submit">Tambah Berita</button>
+    <p id="pesan-berita" style="color: green;"></p>
+  </form>
+  
+
+  <div class="section">
+    <h3>Daftar Berita Sekolah</h3>
+    <table id="tabel-berita">
+      <thead>
+        <tr><th>Judul</th><th>Isi</th><th>Tanggal</th><th>Gambar</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  
+  <script>
+    const URL_BERITA = "https://script.google.com/macros/s/AKfycbw6IzJZNSmond9hxMLaHTMnyOxGNEm0tiP2cQ4uOQMpxVV5xGwhSltp3jWe65h7c3Xi/exec";
+  
+    document.getElementById("form-berita").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const data = {
+        judul: document.getElementById("judul").value,
+        isi: document.getElementById("isi").value,
+        tanggal: document.getElementById("tanggal").value,
+        gambar: document.getElementById("gambar").value,
+      };
+      const res = await fetch(URL_BERITA, {
+        method: "POST",
+        body: JSON.stringify(data)
+      });
+      const result = await res.text();
+      document.getElementById("pesan-berita").innerText = result;
+      e.target.reset();
+      loadBerita();
+    });
+  
+    async function loadBerita() {
+      const res = await fetch(URL_BERITA);
+      const data = await res.json();
+      const tbody = document.querySelector("#tabel-berita tbody");
+      tbody.innerHTML = "";
+      data.reverse().forEach(row => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${row.judul}</td>
+            <td>${row.isi}</td>
+            <td>${row.tanggal}</td>
+            <td>${row.gambar ? `<img src="${row.gambar}" width="100">` : '-'}</td>
+          </tr>`;
+      });
+    }
+  
+    loadBerita();
+  </script>
+  
+
+  
+  <script>
+    const PIN_BENAR = "1234"; // Ganti sesuai kebutuhan
+
+    function cekPIN() {
+      const input = document.getElementById("pinInput").value;
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (input === PIN_BENAR) {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      } else {
+        errorMsg.textContent = "PIN salah. Silakan coba lagi.";
+      }
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.display = (sidebar.style.display === "none") ? "block" : "none";
+    }
+
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.nextElementSibling;
+      dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+    }
+  </script>
+
+</body>
+</html>
